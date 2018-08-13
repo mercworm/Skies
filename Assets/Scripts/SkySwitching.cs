@@ -9,6 +9,8 @@ public class SkySwitching : MonoBehaviour {
 
     public GameObject planetGroup;
 
+    public Animator switchSkyAnim;
+
     // Use this for initialization
     void Start ()
     {
@@ -17,8 +19,8 @@ public class SkySwitching : MonoBehaviour {
 
     public IEnumerator Switch()
     {
-        //start whatever animation
-        yield return new WaitForSeconds(0); //until the animation is finished, so the player doesn't see the switch.
+        switchSkyAnim.SetTrigger("Hide");
+        yield return new WaitForSeconds(1); //until the animation is finished, so the player doesn't see the switch.
         EventManager.TriggerEvent("PlanetChange");
 
         for (int i = 0; i < planetGroup.transform.childCount; i++)
@@ -30,7 +32,7 @@ public class SkySwitching : MonoBehaviour {
 
 
         planets[currentSpace].SetActive(true);
-        //start whatever animation again, but the other way.
+        switchSkyAnim.SetTrigger("Show");
         StopCoroutine(Switch());
     }
 
