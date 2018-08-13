@@ -25,6 +25,16 @@ public class MenuControls : MonoBehaviour {
         {
             Application.Quit();
         }
+
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+
+        }
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+
+        }
 	}
 
     public IEnumerator Fading ()
