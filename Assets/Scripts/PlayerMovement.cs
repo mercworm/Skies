@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnEnable()
     {
-        EventManager.StartListening("ResetPlayerMovement", ResetMovement);
+        EventManager.StartListening("PlanetChange", ResetMovement);
     }
 
     // Use this for initialization
