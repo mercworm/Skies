@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnEnable()
     {
+        //Checking when to reset the position.
         EventManager.StartListening("PlanetChange", ResetMovement);
     }
 
@@ -20,9 +21,9 @@ public class PlayerMovement : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+    //Making the player move.
     void FixedUpdate()
     {
-
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -31,8 +32,9 @@ public class PlayerMovement : MonoBehaviour {
         rb2d.AddForce(movement * speed);
     }
 
+    //Resetting the player's position on the center of the screen.
     public void ResetMovement ()
     {
-        transform.position = Vector3.MoveTowards(transform.position, midPoint.transform.position, speed);
+        transform.position = midPoint.transform.position;
     }
 }

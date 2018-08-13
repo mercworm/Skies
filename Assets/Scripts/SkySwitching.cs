@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Takes care of switching the skies.
 public class SkySwitching : MonoBehaviour {
 
     public GameObject[] planets;
@@ -18,6 +19,7 @@ public class SkySwitching : MonoBehaviour {
         currentSpace = 0;
     }
 
+    //switch the sky.
     public IEnumerator Switch()
     {
         switchSkyAnim.SetTrigger("Hide");
@@ -31,7 +33,6 @@ public class SkySwitching : MonoBehaviour {
                 child.SetActive(false);
         }
 
-
         planets[currentSpace].SetActive(true);
         yield return new WaitForSeconds(0.5f);
         isSwitching = false;
@@ -41,6 +42,8 @@ public class SkySwitching : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //check which button has been pressed.
+        //change sky accordingly.
         if (!isSwitching)
         {
             if (Input.GetKey(KeyCode.Alpha1))

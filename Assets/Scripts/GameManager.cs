@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-
-	}
-	
-	// Update is called once per frame
+    //Update is called once per frame
 	void Update () {
+        //go back to the main menu.
 		if (Input.GetKey(KeyCode.Escape))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
