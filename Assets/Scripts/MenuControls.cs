@@ -8,6 +8,9 @@ public class MenuControls : MonoBehaviour {
 
     public Image fadeScreen;
 
+    public GameObject controlsScreen;
+    public GameObject creditsScreen;
+
     private void Awake()
     {
         fadeScreen.CrossFadeAlpha(0, 1f, false);
@@ -26,16 +29,25 @@ public class MenuControls : MonoBehaviour {
             Application.Quit();
         }
 
-
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-
+            controlsScreen.SetActive(true);
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-
+            controlsScreen.SetActive(false);
         }
-	}
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            creditsScreen.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            creditsScreen.SetActive(false);
+        }
+
+    }
 
     public IEnumerator Fading ()
     {
