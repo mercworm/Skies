@@ -10,6 +10,7 @@ public class SkySwitching : MonoBehaviour {
     public GameObject planetGroup;
 
     public Animator switchSkyAnim;
+    public bool isSwitching = false;
 
     // Use this for initialization
     void Start ()
@@ -32,85 +33,98 @@ public class SkySwitching : MonoBehaviour {
 
 
         planets[currentSpace].SetActive(true);
-        switchSkyAnim.SetTrigger("Show");
+        yield return new WaitForSeconds(0.5f);
+        isSwitching = false;
         StopCoroutine(Switch());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (!isSwitching)
         {
-            if (currentSpace != 1)
+            if (Input.GetKey(KeyCode.Alpha1))
             {
-                currentSpace = 1;
-                StartCoroutine(Switch());
+                isSwitching = true;
+                if (currentSpace != 1)
+                {
+                    currentSpace = 1;
+                    StartCoroutine(Switch());
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.Alpha2))
-        {
-            if (currentSpace != 2)
+            else if (Input.GetKey(KeyCode.Alpha2))
             {
-                currentSpace = 2;
-                StartCoroutine(Switch());
+                isSwitching = true;
+                if (currentSpace != 2)
+                {
+                    currentSpace = 2;
+                    StartCoroutine(Switch());
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.Alpha3))
-        {
-            if (currentSpace != 3)
+            else if (Input.GetKey(KeyCode.Alpha3))
             {
-                currentSpace = 3;
-                StartCoroutine(Switch());
+                isSwitching = true;
+                if (currentSpace != 3)
+                {
+                    currentSpace = 3;
+                    StartCoroutine(Switch());
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.Alpha4))
-        {
-            if (currentSpace != 4)
+            else if (Input.GetKey(KeyCode.Alpha4))
             {
-                currentSpace = 4;
-                StartCoroutine(Switch());
+                isSwitching = true;
+                if (currentSpace != 4)
+                {
+                    currentSpace = 4;
+                    StartCoroutine(Switch());
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.Alpha5))
-        {
-            if (currentSpace != 5)
+            else if (Input.GetKey(KeyCode.Alpha5))
             {
-                currentSpace = 5;
-                StartCoroutine(Switch());
+                isSwitching = true;
+                if (currentSpace != 5)
+                {
+                    currentSpace = 5;
+                    StartCoroutine(Switch());
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.Alpha6))
-        {
-            if (currentSpace != 6)
+            else if (Input.GetKey(KeyCode.Alpha6))
             {
-                currentSpace = 6;
-                StartCoroutine(Switch());
+                isSwitching = true;
+                if (currentSpace != 6)
+                {
+                    currentSpace = 6;
+                    StartCoroutine(Switch());
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.Alpha7))
-        {
-            if (currentSpace != 7)
+            else if (Input.GetKey(KeyCode.Alpha7))
             {
-                currentSpace = 7;
-                StartCoroutine(Switch());
+                isSwitching = true;
+                if (currentSpace != 7)
+                {
+                    currentSpace = 7;
+                    StartCoroutine(Switch());
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.Alpha8))
-        {
-            if (currentSpace != 8)
+            else if (Input.GetKey(KeyCode.Alpha8))
             {
-                currentSpace = 8;
-                StartCoroutine(Switch());
+                isSwitching = true;
+                if (currentSpace != 8)
+                {
+                    currentSpace = 8;
+                    StartCoroutine(Switch());
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.Alpha9))
-        {
-            if (currentSpace != 9)
+            else if (Input.GetKey(KeyCode.Alpha9))
             {
-                currentSpace = 9;
-                StartCoroutine(Switch());
+                isSwitching = true;
+                if (currentSpace != 9)
+                {
+                    currentSpace = 9;
+                    StartCoroutine(Switch());
+                }
             }
+            else return;
         }
-        else return;
     }
 }
