@@ -13,6 +13,8 @@ public class SkySwitching : MonoBehaviour {
     public Animator switchSkyAnim;
     public bool isSwitching = false;
 
+    private bool firstSwitch = true;
+
     // Use this for initialization
     void Start ()
     {
@@ -36,6 +38,11 @@ public class SkySwitching : MonoBehaviour {
         planets[currentSpace].SetActive(true);
         yield return new WaitForSeconds(0.5f);
         isSwitching = false;
+        if (firstSwitch)
+        {
+            firstSwitch = false;
+            EventManager.TriggerEvent("TelescopeOpen");
+        }
         StopCoroutine(Switch());
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public float speed;
+    public float soundStopSpeed;
     private Rigidbody2D rb2d;
 
     public GameObject midPoint;
@@ -12,10 +13,19 @@ public class PlayerMovement : MonoBehaviour {
     private bool isPlaying = false;
     public AudioSource telescopeSound;
 
+    private bool canMove;
+
     private void OnEnable()
     {
         //Checking when to reset the position.
         EventManager.StartListening("PlanetChange", ResetMovement);
+        EventManager.StartListening("TelescopeOpen", StartMoving);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening("PlanetChange", ResetMovement);
+        EventManager.StopListening("TelescopeOpen", StartMoving);
     }
 
     // Use this for initialization
@@ -27,12 +37,20 @@ public class PlayerMovement : MonoBehaviour {
     //Making the player move.
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        if (canMove)
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
 
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
-        rb2d.AddForce(movement * speed);
+            rb2d.AddForce(movement * speed);
+        }
+    }
+
+    public void StartMoving ()
+    {
+        canMove = true;
     }
 
     //this stuff works, but it's not really ideal.
@@ -40,9 +58,18 @@ public class PlayerMovement : MonoBehaviour {
     private void Update()
     {
         //add that bool so it doesn't start playing over and over
-        if (rb2d.velocity.magnitude >= 0.2f)
+        if (isPlaying == false)
         {
-            telescopeSound.Play();
+            if (rb2d.velocity.magnitude >= soundStopSpeed)
+            {
+                isPlaying = true;
+                telescopeSound.Play();
+            }
+        }
+        if (rb2d.velocity.magnitude < soundStopSpeed)
+        {
+            isPlaying = false;
+            telescopeSound.Stop();
         }
 
      ////playing a sound while a button is held down
