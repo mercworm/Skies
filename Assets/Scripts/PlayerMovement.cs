@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public float speed;
-    public float soundStopSpeed;
+    public float soundStopPoint, soundStartPoint;
     private Rigidbody2D rb2d;
 
     public GameObject midPoint;
@@ -63,13 +63,13 @@ public class PlayerMovement : MonoBehaviour {
         //add that bool so it doesn't start playing over and over
         if (isPlaying == false)
         {
-            if (rb2d.velocity.magnitude >= soundStopSpeed)
+            if (rb2d.velocity.magnitude >= soundStartPoint)
             {
                 isPlaying = true;
                 telescopeSound.Play();
             }
         }
-        if (rb2d.velocity.magnitude < soundStopSpeed)
+        if (rb2d.velocity.magnitude < soundStopPoint)
         {
             isPlaying = false;
             telescopeSound.Stop();
