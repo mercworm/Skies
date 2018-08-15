@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 363254165}
   - component: {fileID: 363254167}
   - component: {fileID: 363254166}
+  - component: {fileID: 363254168}
   m_Layer: 0
   m_Name: Lid
   m_TagString: Untagged
@@ -408,6 +409,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &363254168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 363254164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ae98cdaff792744b00f79e216f979c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lidSource: {fileID: 0}
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
 --- !u!1 &387666977
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,19 +13,20 @@ public class PlayerMovement : MonoBehaviour {
     private bool isPlaying = false;
     public AudioSource telescopeSound;
 
-    private bool canMove;
+    private bool canMove = false;
 
     private void OnEnable()
     {
         //Checking when to reset the position.
         EventManager.StartListening("PlanetChange", ResetMovement);
-        EventManager.StartListening("TelescopeOpen", StartMoving);
+        //Checking when the player's movement needs switching.
+        EventManager.StartListening("PlayerMovementToggle", MoveToggle);
     }
 
     private void OnDisable()
     {
         EventManager.StopListening("PlanetChange", ResetMovement);
-        EventManager.StopListening("TelescopeOpen", StartMoving);
+        EventManager.StopListening("PlayerMovementToggle", MoveToggle);
     }
 
     // Use this for initialization
@@ -48,9 +49,11 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    public void StartMoving ()
+    //triggering every time the planets switch, so the player can't move while the animation is playing.
+    public void MoveToggle ()
     {
-        canMove = true;
+        if (canMove) canMove = false;
+        else canMove = true;
     }
 
     //this stuff works, but it's not really ideal.
@@ -71,27 +74,7 @@ public class PlayerMovement : MonoBehaviour {
             isPlaying = false;
             telescopeSound.Stop();
         }
-
-     ////playing a sound while a button is held down
-     //if (!isPlaying)
-     //{
-     //    if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-     //    {
-     //        isPlaying = true;
-     //        telescopeSound.Play();
-     //    }
-     //}
-     //
-     //if (isPlaying)
-     //{
-     //    if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
-     //    {
-     //        isPlaying = false;
-     //        telescopeSound.Stop();
-     //    }
-     //}
     }
-
 
     //Resetting the player's position on the center of the screen.
     public void ResetMovement ()

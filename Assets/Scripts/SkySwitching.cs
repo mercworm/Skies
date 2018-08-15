@@ -24,6 +24,9 @@ public class SkySwitching : MonoBehaviour {
     //switch the sky.
     public IEnumerator Switch()
     {
+        if (!firstSwitch) EventManager.TriggerEvent("PlayerMovementToggle");
+        else firstSwitch = false;
+
         switchSkyAnim.SetTrigger("Hide");
         yield return new WaitForSeconds(1); //until the animation is finished, so the player doesn't see the switch.
         EventManager.TriggerEvent("PlanetChange");
@@ -38,11 +41,9 @@ public class SkySwitching : MonoBehaviour {
         planets[currentSpace].SetActive(true);
         yield return new WaitForSeconds(0.5f);
         isSwitching = false;
-        if (firstSwitch)
-        {
-            firstSwitch = false;
-            EventManager.TriggerEvent("TelescopeOpen");
-        }
+
+        EventManager.TriggerEvent("PlayerMovementToggle");
+
         StopCoroutine(Switch());
     }
 

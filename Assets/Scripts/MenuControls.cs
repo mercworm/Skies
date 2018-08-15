@@ -11,9 +11,14 @@ public class MenuControls : MonoBehaviour {
     public GameObject controlsScreen;
     public GameObject creditsScreen;
 
+    private AudioSource buttonSource;
+
+    public AudioClip startGame, controlsClip, creditsClip;
+
     private void Awake()
     {
         fadeScreen.CrossFadeAlpha(0, 1f, false);
+        buttonSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +36,8 @@ public class MenuControls : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            buttonSource.clip = controlsClip;
+            buttonSource.Play();
             controlsScreen.SetActive(true);
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
@@ -40,6 +47,8 @@ public class MenuControls : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            buttonSource.clip = creditsClip;
+            buttonSource.Play();
             creditsScreen.SetActive(true);
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))
@@ -51,6 +60,8 @@ public class MenuControls : MonoBehaviour {
 
     public IEnumerator Fading ()
     {
+        buttonSource.clip = startGame;
+        buttonSource.Play();
         fadeScreen.CrossFadeAlpha(1, 1f, false);
         yield return new WaitForSeconds(1);
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
