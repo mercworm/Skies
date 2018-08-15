@@ -7,8 +7,9 @@ public class AudioControl : MonoBehaviour {
     public static AudioControl controller;
 
     AudioSource mainSource;
+    public AudioClip[] audioClips;
 
-    //either a group, or a single audio file i have edited.
+    int currentClip = 0;
 
     private void Awake()
     {
@@ -16,6 +17,10 @@ public class AudioControl : MonoBehaviour {
         {
             DontDestroyOnLoad(gameObject);
             controller = this;
+
+            mainSource = GetComponent<AudioSource>();
+            mainSource.clip = audioClips[currentClip];
+            mainSource.Play();
         }
         else if (controller != this)
         {
@@ -23,10 +28,24 @@ public class AudioControl : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
-    void Start () {
-        mainSource = GetComponent<AudioSource>();
-	}
+    private void Update()
+    {
+        if (!mainSource.isPlaying)
+        {
+            GetNextClip();
+        }
+    }
+
+    void GetNextClip ()
+    {
+        currentClip++;
+        if (audioClips[currentClip] == null)
+        {
+            currentClip = 0;
+        }
+        mainSource.clip = audioClips[currentClip];
+        mainSource.Play();
+    }
 
     //make a void or something that takes care of audio switching (if I need it) or looping and stuff.
     //this might just be a script to make sure that the music is always playing.
