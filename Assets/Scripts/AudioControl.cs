@@ -46,7 +46,4 @@ public class AudioControl : MonoBehaviour {
         mainSource.clip = audioClips[currentClip];
         mainSource.Play();
     }
-
-    //make a void or something that takes care of audio switching (if I need it) or looping and stuff.
-    //this might just be a script to make sure that the music is always playing.
 }
