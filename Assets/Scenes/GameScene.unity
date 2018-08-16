@@ -1384,7 +1384,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6415094, g: 0.49882707, b: 0.39035243, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1445,9 +1445,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0.2
-      minScalar: 1
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1498,7 +1498,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -1551,7 +1551,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -2094,8 +2094,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.052837573
-          value: 0.9944366
+          time: 0.066539966
+          value: 0.48888052
           inSlope: -0.00036404273
           outSlope: -0.00036404273
           tangentMode: 0
@@ -2103,13 +2103,13 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.94775
-          value: 0.9870728
-          inSlope: -0.020485403
-          outSlope: -0.020485403
+          time: 0.8909988
+          value: 0.6315175
+          inSlope: 1.3821388
+          outSlope: 1.3821388
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.093731046
+          inWeight: 0.08678101
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
@@ -6942,7 +6942,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e93ac142a6e58bd449071fcb4aae9f93, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e0878322868c1f4c82fa95e5bfcd865, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7140,7 +7140,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e93ac142a6e58bd449071fcb4aae9f93, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e0878322868c1f4c82fa95e5bfcd865, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5176471}
   m_FlipX: 0
   m_FlipY: 1
