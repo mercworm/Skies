@@ -805,9 +805,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ae98cdaff792744b00f79e216f979c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lidSource: {fileID: 0}
-  openSound: {fileID: 0}
-  closeSound: {fileID: 0}
+  lidSource: {fileID: 462245891}
+  openSound: {fileID: 8300000, guid: 2f98ad56782c8214e9a08b1cf2932c57, type: 3}
+  closeSound: {fileID: 8300000, guid: 9a9ba3e70b553fb408ce731dac601cbd, type: 3}
 --- !u!1 &387666977
 GameObject:
   m_ObjectHideFlags: 0
