@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 
 //Takes care of switching the skies.
 public class SkySwitching : MonoBehaviour {
@@ -15,10 +16,15 @@ public class SkySwitching : MonoBehaviour {
 
     private bool firstSwitch = true;
 
+    public PostProcessingProfile[] postProcessingProfiles;
+    public Camera camRef;
+
+
     // Use this for initialization
     void Start ()
     {
         currentSpace = 0;
+        
     }
 
     //switch the sky.
@@ -39,6 +45,10 @@ public class SkySwitching : MonoBehaviour {
         }
 
         planets[currentSpace].SetActive(true);
+
+        var profileHolder = camRef.GetComponent<PostProcessingBehaviour>();
+        profileHolder.profile = postProcessingProfiles[currentSpace];
+
         yield return new WaitForSeconds(0.5f);
         isSwitching = false;
 
